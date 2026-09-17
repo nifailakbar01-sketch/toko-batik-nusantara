@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --ivory: #F3ECDD;
+  --cream-card: #FBF7EF;
+  --indigo: #1F3A5F;
+  --indigo-dark: #14263f;
+  --soga: #8B5A2B;
+  --soga-light: #B98552;
+  --sogan-red: #A63D40;
+  --charcoal: #2B2620;
+  --line: #DDD0B8;
+  --radius: 3px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--charcoal);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  margin: 0 0 .5em;
+  color: var(--indigo);
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Motif divider (batik parang inspired) ---------- */
+.motif-divider {
+  height: 10px;
+  width: 100%;
+  background-image: repeating-linear-gradient(45deg, var(--soga) 0 6px, var(--sogan-red) 6px 12px, var(--indigo) 12px 18px);
+  opacity: .85;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  background: var(--indigo);
+  color: var(--ivory);
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.brand {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  color: var(--ivory);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.brand small { font-family: 'Work Sans', sans-serif; font-size: .6rem; color: var(--soga-light); letter-spacing: .12em; }
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a { font-size: .95rem; color: var(--ivory); opacity: .9; transition: opacity .15s; }
+.nav-links a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+.nav-cart {
+  background: var(--sogan-red);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: .85rem;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 72px 0 56px;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 40px;
+  align-items: center;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  margin-bottom: .4em;
+}
+.hero p.lede {
+  font-size: 1.1rem;
+  max-width: 46ch;
+  color: #4a453c;
+}
+.hero-visual {
+  aspect-ratio: 4/3;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--soga) 0%, var(--indigo) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero-visual::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.08) 0 14px, transparent 14px 28px);
+}
+.hero-visual .tag {
+  position: absolute; bottom: 20px; left: 20px;
+  color: #fff; font-family: 'Fraunces', serif; font-size: 1.1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: .95rem;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+}
+.btn-primary { background: var(--sogan-red); color: #fff; }
+.btn-primary:hover { background: #8f3134; }
+.btn-secondary { background: transparent; color: var(--indigo); border-color: var(--indigo); }
+.btn-secondary:hover { background: var(--indigo); color: #fff; }
+.btn-outline-light { border-color: var(--ivory); color: var(--ivory); background: transparent; }
+.btn-block { width: 100%; text-align: center; }
+button.btn { font-family: inherit; }
+
+/* ---------- Sections ---------- */
+section.block { padding: 56px 0; }
+.section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; }
+.section-head p { color: #6b6355; margin: 0; }
+
+/* Category chips */
+.kategori-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.kategori-chip {
+  background: var(--cream-card);
+  border: 1px solid var(--line);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: .9rem;
+  color: var(--soga);
+}
+.kategori-chip.active, .kategori-chip:hover { background: var(--soga); color: #fff; border-color: var(--soga); }
+
+/* Product grid */
+.produk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 24px;
+}
+.produk-card {
+  background: var(--cream-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.produk-card .thumb {
+  aspect-ratio: 1/1;
+  background: linear-gradient(135deg, #e7dcc3, #cbb98f);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--soga); font-family: 'Fraunces', serif; font-size: .85rem; text-align: center; padding: 10px;
+}
+.produk-card img { width: 100%; height: 100%; object-fit: cover; }
+.produk-card .info { padding: 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.produk-card .kategori-label { font-size: .75rem; color: var(--soga); text-transform: none; }
+.produk-card h3 { font-size: 1.05rem; margin: 0; }
+.produk-card .harga { font-weight: 600; color: var(--sogan-red); margin-top: auto; font-size: 1.05rem; }
+.produk-card .stok { font-size: .8rem; color: #7a7263; }
+
+/* Filter bar (katalog) */
+.filter-bar {
+  display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+  background: var(--cream-card); border: 1px solid var(--line); padding: 18px; border-radius: var(--radius);
+  margin-bottom: 32px;
+}
+.filter-bar input[type="text"], select {
+  padding: 10px 14px; border: 1px solid var(--line); border-radius: var(--radius);
+  font-family: inherit; font-size: .9rem; background: #fff;
+}
+
+/* Detail produk */
+.detail-produk { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 48px 0; }
+.detail-produk .thumb-lg { aspect-ratio: 1/1; border-radius: var(--radius); overflow: hidden; background: linear-gradient(135deg, #e7dcc3, #cbb98f); display:flex; align-items:center; justify-content:center; color:var(--soga); font-family:'Fraunces',serif; }
+.detail-produk .thumb-lg img { width: 100%; height: 100%; object-fit: cover; }
+.meta-list { list-style: none; padding: 0; margin: 16px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+.meta-list li { font-size: .9rem; color: #5c554a; }
+.meta-list li strong { color: var(--charcoal); display: block; font-size: .8rem; text-transform: none; color: var(--soga); }
+.harga-besar { font-size: 1.8rem; color: var(--sogan-red); font-family: 'Fraunces', serif; margin: 14px 0; }
+.qty-form { display: flex; gap: 12px; align-items: center; margin-top: 20px; }
+.qty-form input[type="number"] { width: 80px; padding: 10px; border: 1px solid var(--line); border-radius: var(--radius); }
+
+/* Cart / checkout tables */
+table.cart-table { width: 100%; border-collapse: collapse; background: var(--cream-card); border: 1px solid var(--line); }
+table.cart-table th, table.cart-table td { padding: 14px 16px; border-bottom: 1px solid var(--line); text-align: left; font-size: .92rem; }
+table.cart-table th { background: #EFE6D2; color: var(--indigo); font-weight: 600; }
+.cart-total-row { font-family: 'Fraunces', serif; font-size: 1.2rem; color: var(--sogan-red); }
+.cart-actions { display: flex; justify-content: space-between; margin-top: 24px; }
+
+form.inline { display: inline; }
+
+/* Checkout form */
+.checkout-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; padding: 48px 0; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: .85rem; color: var(--soga); margin-bottom: 6px; font-weight: 600; }
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius); font-family: inherit; font-size: .95rem; background: #fff;
+}
+.form-error { color: var(--sogan-red); font-size: .82rem; margin-top: 4px; }
+.order-summary { background: var(--cream-card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; height: fit-content; }
+.order-summary .item-row { display: flex; justify-content: space-between; font-size: .9rem; padding: 8px 0; border-bottom: 1px solid var(--line); }
+
+/* Flash messages */
+.flash { padding: 14px 20px; border-radius: var(--radius); margin-bottom: 20px; font-size: .92rem; }
+.flash-success { background: #E4EFDD; color: #3B5B2E; border: 1px solid #BEDCAA; }
+.flash-error { background: #F6E1DF; color: var(--sogan-red); border: 1px solid #E3B7B3; }
+
+/* Success page */
+.sukses-box { text-align: center; padding: 72px 0; }
+.sukses-box .kode { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--sogan-red); }
+
+/* Footer */
+.site-footer { background: var(--indigo); color: var(--ivory); padding: 48px 0 24px; margin-top: 60px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
+.site-footer h4 { color: var(--ivory); font-size: 1rem; }
+.site-footer a { color: #cdd7e2; font-size: .9rem; }
+.site-footer .col p, .site-footer .col a { display: block; margin-bottom: 8px; }
+.copyright { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.15); font-size: .8rem; color: #9fb0c2; }
+
+
+/* ================= Pembayaran: rekening bank, QRIS, bukti transfer ================= */
+.btn-outline { background: transparent; color: var(--indigo); border-color: var(--indigo); }
+.btn-outline:hover { background: var(--indigo); color: #fff; }
+.btn-sm { padding: 7px 14px; font-size: .82rem; }
+
+.panel-bayar {
+  background: var(--cream-card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px; margin-bottom: 24px;
+}
+.panel-bayar-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.panel-bayar-head h3 { margin: 0; font-size: 1.1rem; }
+.nominal-bayar { font-size: .9rem; color: var(--soga); }
+.nominal-bayar strong { color: var(--sogan-red); font-family: 'Fraunces', serif; font-size: 1.05rem; }
+
+/* Daftar rekening bank */
+.rekening-list { display: grid; gap: 12px; }
+.rekening-item {
+  background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--indigo);
+  border-radius: var(--radius); padding: 14px 16px;
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6px 12px;
+}
+.rekening-item .rekening-bank { font-weight: 600; color: var(--indigo); font-size: .9rem; grid-column: 1; }
+.rekening-item .rekening-nomor {
+  grid-column: 1; font-family: 'Fraunces', serif; font-size: 1.35rem;
+  letter-spacing: 1.5px; color: var(--charcoal);
+}
+.rekening-item .rekening-atasnama { grid-column: 1; font-size: .82rem; color: #6b6355; }
+.rekening-item .btn { grid-column: 2; grid-row: 1 / span 3; white-space: nowrap; }
+
+/* QRIS e-wallet */
+.qris-box { display: grid; grid-template-columns: 220px 1fr; gap: 22px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.qris-img { width: 100%; border: 1px solid var(--line); border-radius: var(--radius); display: block; }
+.qris-merchant { font-weight: 600; color: var(--indigo); }
+.qris-nmid { font-size: .82rem; color: #6b6355; margin-bottom: 12px; }
+.qris-logos { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.tag-wallet { background: #EFE6D2; color: var(--soga); font-size: .74rem; padding: 4px 10px; border-radius: 20px; }
+
+/* Instruksi pembayaran */
+.instruksi-bayar { margin: 16px 0 0; padding-left: 20px; }
+.instruksi-bayar li { font-size: .88rem; color: #5c554a; margin-bottom: 6px; }
+.catatan-bukti { font-size: .85rem; color: var(--soga); background: #F3EBD8; border-radius: var(--radius); padding: 10px 14px; margin-top: 14px; }
+
+/* Form unggah bukti pembayaran */
+.blok-konfirmasi { max-width: 720px; margin: 0 auto; }
+.panel-bukti { background: var(--cream-card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; margin-bottom: 24px; }
+.panel-bukti h3 { margin-top: 0; }
+.panel-bukti .hint { display: block; font-size: .78rem; color: #6b6355; margin-top: 6px; }
+.panel-bukti input[type="file"] { width: 100%; padding: 10px; border: 1px dashed var(--line); border-radius: var(--radius); background: #fff; font-size: .9rem; }
+.preview-bukti { margin-bottom: 18px; }
+.preview-bukti img { max-width: 260px; width: 100%; border: 1px solid var(--line); border-radius: var(--radius); display: block; }
+.bukti-terkirim { background: #E4EFDD; border: 1px solid #BEDCAA; border-radius: var(--radius); padding: 14px 16px; margin-bottom: 18px; }
+.bukti-terkirim p { font-size: .88rem; color: #3B5B2E; margin-top: 0; }
+.bukti-thumb { max-width: 200px; width: 100%; border-radius: var(--radius); border: 1px solid #BEDCAA; display: block; }
+
+/* ---------- Akun Pelanggan (login, register, profil) ---------- */
+.auth-wrap { display: flex; justify-content: center; padding: 48px 0; }
+.auth-box {
+  background: var(--cream-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 36px 40px;
+  width: 100%;
+  max-width: 440px;
+}
+.auth-box h1 { font-size: 1.6rem; margin-bottom: 8px; }
+.auth-box > p { font-size: .9rem; color: #6b6355; margin-top: 0; margin-bottom: 20px; }
+.auth-switch { text-align: center; font-size: .9rem; margin-top: 18px; margin-bottom: 0; }
+.auth-switch a { color: var(--sogan-red); font-weight: 600; }
+.auth-actions { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 20px; }
+.hint { display: block; font-size: .82rem; color: #6b6355; margin-top: 4px; }
+
+@media (max-width: 640px) {
+  .qris-box { grid-template-columns: 1fr; }
+  .rekening-item { grid-template-columns: 1fr; }
+  .rekening-item .btn { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 8px; }
+}
+
+@media (max-width: 860px) {
+  .hero, .detail-produk, .checkout-grid, .footer-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
