@@ -44,6 +44,24 @@ async function updateStatus(req, res) {
   res.json({ success: true, message: 'Status transaksi berhasil diperbarui.' });
 }
 
+// POST /api/admin/transaksi/hapus/:id
+async function hapusTransaksi(req, res) {
+  const { id } = req.params;
+
+  try {
+    const [result] = await pool.query('DELETE FROM transaksi WHERE id = ?', [id]);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ success: false, message: 'Transaksi tidak ditemukan.' });
+    }
+
+    res.json({ success: true, message: 'Transaksi berhasil dihapus.' });
+  } catch (err) {
+    console.error(err);
+    res.status(422).json({ success: false, message: 'Gagal menghapus transaksi.' });
+  }
+}
+
 // GET /api/admin/laporan
 async function laporanPenjualan(req, res) {
   const { dari, sampai } = req.query;
@@ -78,4 +96,4 @@ async function laporanPenjualan(req, res) {
   });
 }
 
-module.exports = { daftarTransaksi, detailTransaksi, updateStatus, laporanPenjualan };
+module.exports = { daftarTransaksi, detailTransaksi, updateStatus, hapusTransaksi, laporanPenjualan };

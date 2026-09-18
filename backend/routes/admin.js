@@ -41,6 +41,7 @@ router.post('/kategori/hapus/:id', requireAdmin, kategoriCtrl.hapusKategori);
 router.get('/transaksi', requireAdmin, transaksiCtrl.daftarTransaksi);
 router.get('/transaksi/:id', requireAdmin, transaksiCtrl.detailTransaksi);
 router.post('/transaksi/:id/status', requireAdmin, transaksiCtrl.updateStatus);
+router.post('/transaksi/hapus/:id', requireAdmin, transaksiCtrl.hapusTransaksi);
 
 // Laporan Penjualan
 router.get('/laporan', requireAdmin, transaksiCtrl.laporanPenjualan);

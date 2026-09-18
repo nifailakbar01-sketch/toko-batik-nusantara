@@ -23,6 +23,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 app.set('trust proxy', 1);
 app.use(
   session({
@@ -31,8 +33,11 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60 * 4, // 4 jam
-      sameSite: 'lax',
-      secure: false // set true jika sudah pakai HTTPS
+      // Di production (frontend Vercel & backend Railway beda domain), cookie
+      // harus sameSite: 'none' + secure: true agar browser mau mengirimnya.
+      // Di localhost tetap 'lax' + secure: false karena belum pakai HTTPS.
+      sameSite: isProduction ? 'none' : 'lax',
+      secure: isProduction
     }
   })
 );
